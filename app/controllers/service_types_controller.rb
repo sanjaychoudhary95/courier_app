@@ -7,8 +7,7 @@ class ServiceTypesController < ApplicationController
   end
 
   # GET /service_types/1 or /service_types/1.json
-  def show
-  end
+  def show; end
 
   # GET /service_types/new
   def new
@@ -16,8 +15,7 @@ class ServiceTypesController < ApplicationController
   end
 
   # GET /service_types/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /service_types or /service_types.json
   def create

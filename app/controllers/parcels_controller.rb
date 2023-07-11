@@ -1,27 +1,23 @@
 class ParcelsController < ApplicationController
   before_action :set_parcel, only: %i[ show edit update destroy ]
+  before_action :set_users, only: %i[ new edit ]
+  before_action :set_service_types, only: %i[ new edit ]
 
   # GET /parcels or /parcels.json
   def index
-    @parcels = Parcel.all
+    @parcels = Parcel.includes(:service_type, :sender, :receiver).all
   end
 
   # GET /parcels/1 or /parcels/1.json
-  def show
-  end
+  def show; end
 
   # GET /parcels/new
   def new
     @parcel = Parcel.new
-    @users = User.all.map{|user| [user.name_with_address, user.id]}
-    @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
   end
 
   # GET /parcels/1/edit
-  def edit
-    @users = User.all.map{|user| [user.name_with_address, user.id]}
-    @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
-  end
+  def edit;  end
 
   # POST /parcels or /parcels.json
   def create
@@ -68,6 +64,14 @@ class ParcelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_parcel
       @parcel = Parcel.find(params[:id])
+    end
+
+    def set_users
+      @users = User.includes(:address).all
+    end
+
+    def set_service_types
+      @service_types = ServiceType.all
     end
 
     # Only allow a list of trusted parameters through.

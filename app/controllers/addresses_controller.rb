@@ -7,8 +7,7 @@ class AddressesController < ApplicationController
   end
 
   # GET /addresses/1 or /addresses/1.json
-  def show
-  end
+  def show; end
 
   # GET /addresses/new
   def new
@@ -16,8 +15,7 @@ class AddressesController < ApplicationController
   end
 
   # GET /addresses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /addresses or /addresses.json
   def create
