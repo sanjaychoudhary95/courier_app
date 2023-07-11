@@ -4,3 +4,5 @@ class AddTrackingNumberToParcels < ActiveRecord::Migration[6.1]
     add_index :parcels, :tracking_number, unique: true
   end
 end
+# run rake task to update tracking_number for all existing parcels
+# rake update_parcel:tracking_number

@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  enum role: { admin: 'admin', sender: 'sender', receiver: 'receiver' }
+
 	validates :name, presence: true
 
 	has_one :address
@@ -9,6 +16,10 @@ class User < ApplicationRecord
 
 
 	def name_with_address
-		@name_with_address ||= [name, address.address_line_one, address.city, address.state, address.country, address.pincode].join('-')
+		if address.presence
+			[name, address.address_line_one, address.city, address.state, address.country, address.pincode].join('-')
+		else
+			name
+		end
 	end
 end

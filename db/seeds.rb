@@ -12,7 +12,7 @@ end
 
 
 ['sender', 'receiver'].each do |name|
-	user = User.new(name: name, email: "#{name}@gmail.com")
+	user = User.new(name: name, email: "#{name}@gmail.com", password: 'password', password_confirmation: 'password', role: :admin)
 	user.build_address(address_line_one: "Test Street #{name}", city: "New Delhi",
 		               state: "New Delhi", country: "India", pincode: 110111,
 		               mobile_number: '9999999999')

@@ -1,7 +1,9 @@
 class ParcelsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_parcel, only: %i[ show edit update destroy ]
-  before_action :set_users, only: %i[ new edit ]
-  before_action :set_service_types, only: %i[ new edit ]
+  before_action :set_users, only: %i[ new edit create update]
+  before_action :set_service_types, only: %i[ new edit create update ]
 
   # GET /parcels or /parcels.json
   def index
@@ -29,8 +31,6 @@ class ParcelsController < ApplicationController
         format.json { render :show, status: :created, location: @parcel }
       else
         format.html do
-          @users = User.all.map{|user| [user.name_with_address, user.id]}
-          @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]} 
           render :new, status: :unprocessable_entity
         end
         format.json { render json: @parcel.errors, status: :unprocessable_entity }

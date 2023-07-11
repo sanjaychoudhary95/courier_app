@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Courier Service, <%= @receiver.name %></h1>
+    <p>
+      Your Parcel status has been changed: <%= @parcel.status %>. Use this ID: <%= @parcel.tracking_number %> to track it.<br>
+    </p>
+    <p>
+      Visit link: <%= @url %>.
+    </p>
+    <p>Thanks and have a great day!</p>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 class ServiceTypesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_service_type, only: %i[ show edit update destroy ]
 
   # GET /service_types or /service_types.json

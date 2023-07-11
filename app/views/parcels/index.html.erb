@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <h1>List Parcels</h1>
 
 <br />
 
-<%= link_to 'New Parcel', new_parcel_path %>
-
-<br /><br />
+<% if can? :create, Parcel %>
+  <%= link_to 'New Parcel', new_parcel_path %>
+<% end %>
 
 <table>
   <thead>
@@ -31,8 +29,12 @@
         <td><%= parcel.sender.name %></td>
         <td><%= parcel.receiver.name %></td>
         <td><%= link_to 'Show', parcel %></td>
-        <td><%= link_to 'Edit', edit_parcel_path(parcel) %></td>
-        <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :edit, Parcel %>
+          <td><%= link_to 'Edit', edit_parcel_path(parcel) %></td>
+        <% end %>
+        <% if can? :destroy, Parcel %>
+          <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @service_type.name %>
 </p>
-
-<%= link_to 'Edit', edit_service_type_path(@service_type) %> |
+<% if can? :edit, ServiceType %>
+  <%= link_to 'Edit', edit_service_type_path(@service_type) %> |
+<% end %>
 <%= link_to 'Back', service_types_path %>
