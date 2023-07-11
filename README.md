@@ -5,20 +5,42 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: ruby '2.7.1'
 
-* System dependencies
+* Database: PostgreSQL
 
-* Configuration
+## Quick start
+1) Install ruby bundler
+```
+gem install bundler
+```
+2) Install dependencies
+```
+bundle install
+```
 
-* Database creation
+3)Create a database on your local PostgreSQL
+```
+CREATE DATABASE
+rake db:create
+```
 
-* Database initialization
+4) Migrate database
+```
+rails db:migrate
+```
+5) Start the server
+```
+rails server
+```
 
-* How to run the test suite
+6) Update tracking number in existing Parcels
+```
+rake update_parcel:tracking_number
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+7) Manually create the report,run the command.
+```
+rake generate_report
+```
 
-* Deployment instructions
-
-* ...
